@@ -19,7 +19,18 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <% if user_signed_in? %>
+           <%= button_to 'Sair', destroy_user_session_path, method: :delete%> 
+        <%end%>
+      </nav>
+    </header>
     <main class="container mx-auto mt-28 px-5 flex">
+      <div>
+        <%= notice %>
+        <%= alert %>
+      </div>
       <%= yield %>
     </main>
   </body>
