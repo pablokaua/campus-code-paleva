@@ -1,0 +1,13 @@
+<h1>Detalhes do Prato</h1>
+<h2><%= Dish.model_name.human%> <%= @dish.name%></h2>
+
+<dl>   
+    <dt><%= Dish.human_attribute_name(:restaurant_id)%>:</dt>
+    <dd><%= @dish.restaurant.brand_name%></dd>    
+    <dd><%= @dish.description%></dd> 
+    <dt><%= Dish.human_attribute_name(:calories)%>:</dt>
+    <dd><%= @dish.calories%>g</dd> 
+</dl>
+
+<%= link_to 'Editar', edit_dish_path(@dish)%>
+<%= button_to 'Excluir', dish_path(@dish), method: :delete%> 
