@@ -1,0 +1,7 @@
+<h1>Minhas Bebidas</h1>
+
+<%= link_to 'Registrar Bebida', new_beverage_path%>
+
+<% @beverages.each do |beverage|%>
+    <%= render beverage%>
+<%end%>

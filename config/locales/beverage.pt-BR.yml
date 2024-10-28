@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      beverage: "Bebida"
+    attributes:
+      beverage:
+        name: "Nome"
+        description: "Descrição"
+        calories: "Calorias"
+        restaurant_id: "Restaurante"
+        alcoholic: "Alcoólica"
+
+

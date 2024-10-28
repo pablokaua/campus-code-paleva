@@ -1,0 +1,21 @@
+<h1>Detalhes da Bebida</h1>
+<h2><%= Beverage.model_name.human%> <%= @beverage.name%></h2>
+
+<dl>   
+    <dt><%= Beverage.human_attribute_name(:restaurant_id)%>:</dt>
+    <dd><%= @beverage.restaurant.brand_name%></dd>    
+    <dd><%= @beverage.description%></dd> 
+    <dt><%= Beverage.human_attribute_name(:alcoholic)%>:</dt>
+    <dd>
+        <%if @beverage.alcoholic%>
+        Sim 
+        <%else%>
+        Não
+        <%end%>
+    </dd> 
+    <dt><%= Beverage.human_attribute_name(:calories)%>:</dt>
+    <dd><%= @beverage.calories%>g</dd> 
+</dl>
+
+<%= link_to 'Editar', edit_beverage_path(@beverage)%>
+<%= button_to 'Excluir', beverage_path(@beverage), method: :delete%> 
