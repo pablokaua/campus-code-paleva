@@ -1,5 +1,6 @@
 class Restaurant < ApplicationRecord
   belongs_to :user
+  has_many :dishes
 
   validates :code,:corporate_name, :brand_name, :registration_number, :full_address, :city, :state, :phone_number, :email, presence: true
 

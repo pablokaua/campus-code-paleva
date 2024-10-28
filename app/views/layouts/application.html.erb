@@ -28,6 +28,7 @@
       <nav>
         <% if user_signed_in? %>
           <%= button_to 'Sair', destroy_user_session_path, method: :delete%> 
+          <%= link_to 'Meus Pratos', dishes_path%>
         <%end%> 
       </nav>
     </header>

@@ -1,0 +1,7 @@
+<dl>
+    <dt><%= link_to dish.name, dish_path(dish)%></dt>    
+    <dt><%= Dish.human_attribute_name(:restaurant_id)%>:</dt>
+    <dd><%= dish.restaurant.brand_name%></dd>    
+    <dt><%= Dish.human_attribute_name(:calories)%>:</dt>
+    <dd><%= dish.calories%></dd>    
+</dl>
