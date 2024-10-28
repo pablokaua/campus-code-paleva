@@ -11,8 +11,9 @@ describe 'Usuário se autentica' do
   end
 
   it 'com sucesso' do 
-    User.create!(cpf: '98624520053',name: 'Pablo',last_name: 'Kaua', email: 'pablo@email.com', password: 'password12345')
-
+    user = User.create!(cpf: '98624520053',name: 'Pablo',last_name: 'Kaua', email: 'pablo@email.com', password: 'password12345')
+    Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
+    
     visit root_path
     within 'form' do 
       fill_in 'E-mail', with: 'pablo@email.com'
@@ -38,6 +39,7 @@ describe 'Usuário se autentica' do
 
   it 'faz logout' do 
     user = User.create!(cpf: '98624520053',name: 'Pablo',last_name: 'Kaua', email: 'pablo@email.com', password: 'password12345')
+    Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
 
     login_as(user)
     visit root_path

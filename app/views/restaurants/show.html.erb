@@ -1,0 +1,17 @@
+<h1><%= @restaurant.brand_name%></h1>
+<h2><%= Restaurant.human_attribute_name(:code)%>: <%= @restaurant.code%></h2>
+
+<dl>
+    <dt><%= Restaurant.human_attribute_name(:corporate_name)%>:</dt>
+    <dt><%= @restaurant.corporate_name%></dt>
+    <dt><%= Restaurant.human_attribute_name(:full_address)%>:</dt>
+    <dt><%= @restaurant.full_address%> - <%= @restaurant.city%> - <%= @restaurant.state%></dt>
+    <dt><%= Restaurant.human_attribute_name(:registration_number)%>:</dt>
+    <dt><%= @restaurant.registration_number%></dt>
+    <dt><%= Restaurant.human_attribute_name(:email)%>:</dt>
+    <dt><%= @restaurant.email%></dt>
+    <dt><%= Restaurant.human_attribute_name(:phone_number)%>:</dt>
+    <dt><%= @restaurant.phone_number%></dt>
+</dl>
+
+<%= link_to 'Editar', edit_restaurant_path(@restaurant)%>

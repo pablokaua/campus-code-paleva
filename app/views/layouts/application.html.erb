@@ -20,10 +20,15 @@
 
   <body>
     <header>
+      <header>
+        <%= link_to root_path do%>
+          <h1>PaLevá</h1>
+        <%end%>
+      </header>
       <nav>
         <% if user_signed_in? %>
-           <%= button_to 'Sair', destroy_user_session_path, method: :delete%> 
-        <%end%>
+          <%= button_to 'Sair', destroy_user_session_path, method: :delete%> 
+        <%end%> 
       </nav>
     </header>
     <main class="container mx-auto mt-28 px-5 flex">

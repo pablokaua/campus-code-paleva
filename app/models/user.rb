@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one :restaurant
+
   validates :name, :last_name,:cpf, presence: true
   validates :cpf, uniqueness: true
   validate :cpf_validated

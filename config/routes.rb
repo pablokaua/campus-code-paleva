@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  authenticate :user do 
-    root to: 'home#index'
-  end
+  root to: 'home#index'
+  resources :restaurants, only: [:new, :create, :show, :edit, :update]
+
 end
