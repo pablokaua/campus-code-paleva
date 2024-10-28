@@ -53,5 +53,23 @@ RSpec.describe Item, type: :model do
         expect(item.errors.include? :calories).to eq false
       end
     end 
+
+    context 'inclusion' do 
+      it 'falso quando bebida não inclui seu tipo alcoólico' do 
+        beverage = Beverage.new(alcoholic: nil)
+
+        beverage.valid? 
+
+        expect(beverage.errors.include? :alcoholic).to eq true
+      end
+
+      it 'verdadeiro quando bebida inclui seu tipo alcoólico' do 
+        beverage = Beverage.new(alcoholic: true)
+
+        beverage.valid? 
+
+        expect(beverage.errors.include? :alcoholic).to eq false
+      end
+    end
   end
 end
