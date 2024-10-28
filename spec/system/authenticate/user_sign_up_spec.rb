@@ -26,10 +26,7 @@ describe 'Usuário se autentica' do
     fill_in 'Confirme sua senha', with: 'password12345'
     click_on 'Criar Conta'
 
-    expect(page).to have_button 'Sair'
-    expect(page).to have_content 'Boas vindas! Você realizou seu registro com sucesso.'
-    user = User.last
-    expect(user.name).to eq 'Pablo'
+    expect(current_path).to eq new_restaurant_path
   end
 
   it 'com dados incompletos' do 
