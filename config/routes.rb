@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:new, :create, :show, :edit, :update]
   resources :dishes, only: [:index, :show, :edit, :update, :new, :create, :destroy]
   resources :beverages, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  get 'search', to: 'items#search', as: 'search_items'
 end
