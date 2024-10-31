@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      item: "Item"
+    attributes:
+      item:
+        name: "Nome"
+        description: "Descrição"
+        calories: "Calorias"
+        restaurant_id: "Restaurante"
+        alcoholic: "Alcoólica"
+
+

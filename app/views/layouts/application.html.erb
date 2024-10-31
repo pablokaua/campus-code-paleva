@@ -30,6 +30,11 @@
           <%= button_to 'Sair', destroy_user_session_path, method: :delete%> 
           <%= link_to 'Meus Pratos', dishes_path%>
           <%= link_to 'Minhas Bebidas', beverages_path%>
+          <%= form_with(url: search_items_path,method: :get) do |f|%>
+            <%= f.label :query, 'Buscar por item'%>
+            <%= f.text_field :query%>
+            <%= f.submit 'Buscar'%>
+          <%end%>
         <%end%> 
       </nav>
     </header>

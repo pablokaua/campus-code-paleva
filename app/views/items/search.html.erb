@@ -1,0 +1,12 @@
+<% if @items.any?%>
+<h1>Resultado da Busca por: <%= @value%></h1>
+    <% @items.each do |item|%>
+        <% if item.is_a?(Dish)%>
+            <%= render 'items/dish', item: item%>
+        <%else%>
+            <%= render 'items/beverage', item: item%>
+        <%end%>
+    <%end%>
+<%else%>
+<h1>Nenhum item encontrado</h1>
+<%end%>
