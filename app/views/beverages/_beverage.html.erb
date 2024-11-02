@@ -4,4 +4,9 @@
     <dd><%= beverage.restaurant.brand_name%></dd>    
     <dt><%= Beverage.human_attribute_name(:calories)%>:</dt>
     <dd><%= beverage.calories%></dd>    
+    <div>
+        <% if beverage.photo.attached? %>
+            <%= image_tag beverage.photo, size: "300x300" %>
+        <% end %>
+    </div>
 </dl>

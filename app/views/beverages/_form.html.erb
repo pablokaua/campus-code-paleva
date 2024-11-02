@@ -26,6 +26,11 @@
         <%= f.radio_button :alcoholic, false, id: "alcoholic_false" %> Não
     </div>
     <div>
+        <div>
+            <% if @beverage.photo.attached? %>
+                <%= image_tag @beverage.photo, size: "300x300" %>
+            <% end %>
+        </div>
         <%= f.label :photo%>
         <%= f.file_field :photo%>
     </div>
