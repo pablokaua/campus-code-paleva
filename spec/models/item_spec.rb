@@ -91,6 +91,15 @@ RSpec.describe Item, type: :model do
 
         expect(item.errors[:photo]).to be_empty
       end
+
+      it 'falso quando a imagem é vazia' do 
+        item = Item.new 
+        
+        item.valid?
+
+        expect(item.errors.include? :photo).to eq true
+        expect(item.errors[:photo]).to include("não deve ser vazia")
+      end
     end
   end
 end

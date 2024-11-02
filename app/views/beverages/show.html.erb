@@ -15,6 +15,13 @@
     </dd> 
     <dt><%= Beverage.human_attribute_name(:calories)%>:</dt>
     <dd><%= @beverage.calories%>g</dd> 
+    <dd>
+        <% if @beverage.photo.attached? %>
+          <%= image_tag @beverage.photo, size: "300x300" %>
+        <% else %>
+            <p>Sem foto disponível</p>
+        <% end %>
+    </dd>
 </dl>
 
 <%= link_to 'Editar', edit_beverage_path(@beverage)%>

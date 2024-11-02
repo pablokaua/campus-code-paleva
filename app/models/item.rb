@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   def acceptable_image
     errors.add(:photo, "não deve ser vazia") unless photo.attached?
 
-    acceptable_types = ["image/jpeg", "image/png"]
+    acceptable_types = ["image/jpeg", "image/png", "image/webp"]
     unless acceptable_types.include?(photo.content_type)
       errors.add(:photo, "deve ser JPEG ou PNG")
     end

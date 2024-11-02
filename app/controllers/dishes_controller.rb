@@ -30,7 +30,7 @@ class DishesController < ApplicationController
   end
 
   def update
-    dish_params = params.require(:dish).permit(:name, :description, :calories)
+    dish_params = params.require(:dish).permit(:name, :description, :calories, :photo)
     if @dish.update(dish_params)
       redirect_to @dish, notice: 'Prato editado com sucesso'
     else
