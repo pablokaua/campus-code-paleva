@@ -14,6 +14,7 @@ describe 'Usuário cadastra um novo prato' do
     expect(page).to have_field 'Nome'
     expect(page).to have_field 'Descrição'
     expect(page).to have_field 'Calorias'
+    expect(page).to have_field 'Foto'
   end
 
   it 'com sucesso' do 
@@ -27,6 +28,7 @@ describe 'Usuário cadastra um novo prato' do
     fill_in 'Nome', with: 'Prato Novo'
     fill_in 'Descrição', with: 'Descrição do Prato Novo'
     fill_in 'Calorias', with: '150'
+    attach_file('Foto', Rails.root.join('spec/fixtures/image.png'))
     click_on 'Gravar'
 
     expect(page).to have_content 'Prato cadastrado com sucesso'
@@ -34,6 +36,7 @@ describe 'Usuário cadastra um novo prato' do
     expect(page).to have_content 'Restaurante: Hamburguer Rei'
     expect(page).to have_content 'Descrição do Prato Novo'
     expect(page).to have_content 'Calorias: 150g'
+    expect(page).to have_css('img[src*="image.png"]')
   end
 
   it 'com campos incompletos' do 
@@ -52,5 +55,6 @@ describe 'Usuário cadastra um novo prato' do
     expect(page).to have_content 'Não foi possível registrar o prato.'
     expect(page).to have_content 'Nome não pode ficar em branco'
     expect(page).to have_content 'Descrição não pode ficar em branco'
+    expect(page).to have_content 'Foto não deve ser vazia'
   end
 end

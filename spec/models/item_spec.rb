@@ -71,5 +71,26 @@ RSpec.describe Item, type: :model do
         expect(beverage.errors.include? :alcoholic).to eq false
       end
     end
+
+    context 'acceptable_image' do 
+      it 'falso quando a imagem não é JPEG ou PNG' do 
+        item = Item.new
+        item.photo.attach(io: File.open(Rails.root.join('spec/fixtures/image.txt')), filename: 'image.txt', content_type: 'image/plain')
+      
+        item.valid?
+
+        expect(item.errors.include? :photo).to eq true
+        expect(item.errors[:photo]).to include("deve ser JPEG ou PNG")
+      end
+
+      it 'verdadeiro quando a imagem é JPEG ou PNG' do 
+        item = Item.new
+        item.photo.attach(io: File.open(Rails.root.join('spec/fixtures/image.png')), filename: 'image.png', content_type: 'image/png')
+      
+        item.valid?
+
+        expect(item.errors[:photo]).to be_empty
+      end
+    end
   end
 end

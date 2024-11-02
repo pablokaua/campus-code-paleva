@@ -11,7 +11,7 @@ class DishesController < ApplicationController
   end
 
   def create 
-    dish_params = params.require(:dish).permit(:name, :description, :calories)
+    dish_params = params.require(:dish).permit(:name, :description, :calories, :photo)
     @dish = Dish.new(dish_params)
     @dish.restaurant = current_user.restaurant
 
