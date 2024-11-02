@@ -4,5 +4,12 @@
     <dd><%= item.restaurant.brand_name%></dd>    
     <dt><%= Item.human_attribute_name(:calories)%>:</dt>
     <dd><%= item.calories%></dd>   
+    <dd>
+        <% if item.photo.attached? %>
+          <%= image_tag item.photo, size: "300x300" %>
+        <% else %>
+            <p>Sem foto disponível</p>
+        <% end %>
+    </dd>
     <%= link_to 'Editar', edit_beverage_path(item)%>
 </dl>

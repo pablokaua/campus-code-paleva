@@ -13,7 +13,7 @@ class BeveragesController < ApplicationController
   end
 
   def create 
-    beverage_params = params.require(:beverage).permit(:name, :description, :calories, :alcoholic)
+    beverage_params = params.require(:beverage).permit(:name, :description, :calories, :alcoholic, :photo)
     @beverage = Beverage.new(beverage_params)
     @beverage.restaurant = current_user.restaurant
 
@@ -29,7 +29,7 @@ class BeveragesController < ApplicationController
   end
 
   def update
-    beverage_params = params.require(:beverage).permit(:name, :description, :calories, :alcoholic)
+    beverage_params = params.require(:beverage).permit(:name, :description, :calories, :alcoholic, :photo)
     if @beverage.update(beverage_params)
       redirect_to @beverage, notice: 'Bebida editada com sucesso'
     else

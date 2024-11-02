@@ -19,8 +19,8 @@ describe 'Usuário busca por uma bebida' do
 
     restaurant = Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
 
-    first_beverage = Beverage.create!(name: 'Cachaça', description: 'bebida blabla', calories: 150, alcoholic: true, restaurant: restaurant)
-    second_beverage = Beverage.create!(name: 'Suco de Maracujá', description: 'bebida blabla', calories: 100,alcoholic: false, restaurant: restaurant)
+    first_beverage = Beverage.create!(name: 'Cachaça', description: 'bebida blabla', calories: 150, alcoholic: true, restaurant: restaurant, photo: attach_image)
+    second_beverage = Beverage.create!(name: 'Suco de Maracujá', description: 'bebida blabla', calories: 100,alcoholic: false, restaurant: restaurant, photo: attach_image)
 
     login_as user 
     visit root_path 
@@ -36,8 +36,8 @@ describe 'Usuário busca por uma bebida' do
 
     restaurant = Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
 
-    first_beverage = Beverage.create!(name: 'Cachaça', description: 'decrição 1', calories: 150, alcoholic: true, restaurant: restaurant)
-    second_beverage = Beverage.create!(name: 'Suco de Maracujá', description: 'decrição 2', calories: 100,alcoholic: false, restaurant: restaurant)
+    first_beverage = Beverage.create!(name: 'Cachaça', description: 'decrição 1', calories: 150, alcoholic: true, restaurant: restaurant, photo: attach_image)
+    second_beverage = Beverage.create!(name: 'Suco de Maracujá', description: 'decrição 2', calories: 100,alcoholic: false, restaurant: restaurant, photo: attach_image)
 
     login_as user 
     visit root_path 
@@ -67,7 +67,7 @@ describe 'Usuário busca por uma bebida' do
 
     restaurant = Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
 
-    beverage = Beverage.create!(name: 'Cachaça', description: 'decrição 1', calories: 150, alcoholic: true, restaurant: restaurant)
+    beverage = Beverage.create!(name: 'Cachaça', description: 'decrição 1', calories: 150, alcoholic: true, restaurant: restaurant, photo: attach_image)
 
     login_as user 
     visit root_path 
@@ -82,6 +82,7 @@ describe 'Usuário busca por uma bebida' do
     expect(page).to have_content 'Restaurante: Hamburguer Rei'
     expect(page).to have_content 'decrição 1'
     expect(page).to have_content 'Calorias: 150g'
+    expect(page).to have_css 'img[src*="image.png"]'
   end 
 
   it 'e edita uma bebida' do 
@@ -89,7 +90,7 @@ describe 'Usuário busca por uma bebida' do
 
     restaurant = Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
 
-    beverage = Beverage.create!(name: 'Cachaça', description: 'decrição 1', calories: 150, alcoholic: true, restaurant: restaurant)
+    beverage = Beverage.create!(name: 'Cachaça', description: 'decrição 1', calories: 150, alcoholic: true, restaurant: restaurant, photo: attach_image)
 
     login_as user 
     visit root_path 
@@ -101,6 +102,7 @@ describe 'Usuário busca por uma bebida' do
     expect(page).to have_field 'Nome'
     expect(page).to have_field 'Descrição'
     expect(page).to have_field 'Calorias'
+    expect(page).to have_field 'Foto'
     expect(page).to have_content 'Alcoólica'
   end
 end

@@ -4,4 +4,9 @@
     <dd><%= dish.restaurant.brand_name%></dd>    
     <dt><%= Dish.human_attribute_name(:calories)%>:</dt>
     <dd><%= dish.calories%></dd>    
+    <div>
+        <% if dish.photo.attached? %>
+            <%= image_tag dish.photo, size: "300x300" %>
+        <% end %>
+    </div>
 </dl>

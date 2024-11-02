@@ -7,6 +7,13 @@
     <dd><%= @dish.description%></dd> 
     <dt><%= Dish.human_attribute_name(:calories)%>:</dt>
     <dd><%= @dish.calories%>g</dd> 
+    <dd>
+        <% if @dish.photo.attached? %>
+          <%= image_tag @dish.photo, size: "300x300" %>
+        <% else %>
+            <p>Sem foto disponível</p>
+        <% end %>
+    </dd>
 </dl>
 
 <%= link_to 'Editar', edit_dish_path(@dish)%>

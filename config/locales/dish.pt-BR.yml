@@ -8,5 +8,6 @@ pt-BR:
         description: "Descrição"
         calories: "Calorias"
         restaurant_id: "Restaurante"
+        photo: "Foto"
 
 

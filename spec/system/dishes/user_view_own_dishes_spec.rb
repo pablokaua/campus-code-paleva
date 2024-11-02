@@ -4,7 +4,7 @@ describe 'Usuário vê seus prórpios pratos' do
   it 'e deve estar autenticado' do 
     user = User.create!(name: 'Pablo', last_name: 'Kaua', cpf: '40898591074', email: 'pablo@email.com', password: 'password1234')
     restaurant = Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
-    dish = Dish.create!(name: 'Canja de frango', description: '100g de Canja de frango blabla', calories: 100, restaurant: restaurant)
+    dish = Dish.create!(name: 'Canja de frango', description: '100g de Canja de frango blabla', calories: 100, restaurant: restaurant, photo: attach_image)
 
     visit dish_path(dish.id)
 
@@ -18,9 +18,9 @@ describe 'Usuário vê seus prórpios pratos' do
     restaurant = Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
     other_restaurant = Restaurant.create!(corporate_name: 'Rede Mec Ducks LTDA', brand_name: 'Mec Ducks', registration_number: '37530632000177', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11800000000', email: 'contato@mecducks.com', user: other_user)
 
-    first_dish = Dish.create!(name: 'Canja de frango', description: '100g de Canja de frango blabla', calories: 100, restaurant: restaurant)
-    second_dish = Dish.create!(name: 'Burrito', description: '135g de blablabla', calories: 323, restaurant: other_restaurant)
-    third_dish = Dish.create!(name: 'Empada de frango', description: '89g de blablbla', calories: 298, restaurant: restaurant)
+    first_dish = Dish.create!(name: 'Canja de frango', description: '100g de Canja de frango blabla', calories: 100, restaurant: restaurant, photo: attach_image)
+    second_dish = Dish.create!(name: 'Burrito', description: '135g de blablabla', calories: 323, restaurant: other_restaurant, photo: attach_image)
+    third_dish = Dish.create!(name: 'Empada de frango', description: '89g de blablbla', calories: 298, restaurant: restaurant, photo: attach_image)
     
     login_as user
     visit root_path 
@@ -41,7 +41,7 @@ describe 'Usuário vê seus prórpios pratos' do
   it 'e visita um prato' do 
     user = User.create!(name: 'Pablo', last_name: 'Kaua', cpf: '40898591074', email: 'pablo@email.com', password: 'password1234')
     restaurant = Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
-    dish = Dish.create!(name: 'Canja de frango', description: 'descrição sobre o prato de comida', calories: 100, restaurant: restaurant)
+    dish = Dish.create!(name: 'Canja de frango', description: 'descrição sobre o prato de comida', calories: 100, restaurant: restaurant, photo: attach_image)
 
     login_as user
     visit root_path 
@@ -53,6 +53,7 @@ describe 'Usuário vê seus prórpios pratos' do
     expect(page).to have_content 'Restaurante: Hamburguer Rei'
     expect(page).to have_content 'descrição sobre o prato de comida'
     expect(page).to have_content 'Calorias: 100g'
+    expect(page).to have_css('img[src*="image.png"]')
   end
 
   it 'e não visita pratos de outros usuários' do 
@@ -62,7 +63,7 @@ describe 'Usuário vê seus prórpios pratos' do
     restaurant = Restaurant.create!(corporate_name: 'Rede Hamburguer Rei LTDA', brand_name: 'Hamburguer Rei', registration_number: '97311218000107', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11900000000', email: 'contato@hambuguer.com', user: user)
     other_restaurant = Restaurant.create!(corporate_name: 'Rede Mec Ducks LTDA', brand_name: 'Mec Ducks', registration_number: '37530632000177', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11800000000', email: 'contato@mecducks.com', user: other_user)
 
-    dish = Dish.create!(name: 'Burrito', description: '135g de blablabla', calories: 323, restaurant: restaurant)
+    dish = Dish.create!(name: 'Burrito', description: '135g de blablabla', calories: 323, restaurant: restaurant, photo: attach_image)
 
     login_as other_user
     visit dish_path(dish.id)
