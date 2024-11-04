@@ -16,5 +16,10 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:new, :create, :show, :edit, :update]
   resources :dishes, only: [:index, :show, :edit, :update, :new, :create, :destroy]
   resources :beverages, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  
+  resources :items, only: [] do 
+    post 'disable', on: :member
+    post 'enable', on: :member
+  end
   get 'search', to: 'items#search', as: 'search_items'
 end

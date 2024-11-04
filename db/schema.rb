@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_31_035800) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_04_102815) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_31_035800) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "alcoholic"
+    t.integer "status", default: 0
     t.index ["restaurant_id"], name: "index_items_on_restaurant_id"
   end
 
@@ -82,8 +83,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_31_035800) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "working_hours", force: :cascade do |t|
+    t.integer "restaurant_id", null: false
+    t.integer "day_of_week"
+    t.time "open_time"
+    t.time "close_time"
+    t.boolean "closed", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_working_hours_on_restaurant_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "restaurants"
   add_foreign_key "restaurants", "users"
+  add_foreign_key "working_hours", "restaurants"
 end

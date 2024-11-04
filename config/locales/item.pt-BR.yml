@@ -1,4 +1,6 @@
 pt-BR:
+  active: "Ativo"
+  inactive: "Desativado"
   activerecord:
     models:
       item: "Item"
@@ -9,5 +11,6 @@ pt-BR:
         calories: "Calorias"
         restaurant_id: "Restaurante"
         alcoholic: "Alcoólica"
+        status: "Status do Item"
 
 

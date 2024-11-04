@@ -7,6 +7,8 @@
     <dd><%= @dish.description%></dd> 
     <dt><%= Dish.human_attribute_name(:calories)%>:</dt>
     <dd><%= @dish.calories%>g</dd> 
+    <dt><%= Dish.human_attribute_name(:status)%>:</dt>
+    <dd><%= I18n.translate @dish.status %></dd>
     <dd>
         <% if @dish.photo.attached? %>
           <%= image_tag @dish.photo, size: "300x300" %>
@@ -15,6 +17,12 @@
         <% end %>
     </dd>
 </dl>
+
+<% if @dish.active? %>
+  <%= button_to 'DESABILITAR', disable_item_path(@dish)%>  
+<%else%>
+  <%= button_to 'ATIVAR', enable_item_path(@dish)%>
+<%end%>
 
 <%= link_to 'Editar', edit_dish_path(@dish)%>
 <%= button_to 'Excluir', dish_path(@dish), method: :delete%> 
