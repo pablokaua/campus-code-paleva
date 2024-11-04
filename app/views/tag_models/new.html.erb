@@ -1,0 +1,18 @@
+<h1>Cadastrar Novo Modelo de Marcador</h1>
+
+<% if@tag_model.errors.any? %>
+    <p>Verifique os erros abaixo:</p>
+    <ul>
+    <%@tag_model.errors.full_messages.each do |msg|%>
+        <li><%= msg%></li>
+    <%end%>
+    </ul>
+<%end%>
+
+<%= form_with model: @tag_model do |f|%>
+    <div>
+        <%= f.label :description%>
+        <%= f.text_field :description%>
+    </div>
+    <%= f.submit 'Enviar'%>
+<%end%>

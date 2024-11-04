@@ -1,0 +1,13 @@
+<h1>Modelos de Marcadores</h1>
+
+<%= link_to 'Cadastrar Novo', new_tag_model_path%>
+
+<% if @tag_models.any?%>
+    <% @tag_models.each do |tag|%>
+        <div>
+            <%= tag.description%>
+        </div>
+    <%end%>
+<%else%>
+    <p>Nenhum modelo de marcador cadastrado</p>
+<%end%>

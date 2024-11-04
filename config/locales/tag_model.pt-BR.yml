@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      tag_model: "Modelo de Marcador"
+    attributes:
+      tag_model:
+        description: "Descrição"
+        
+
+
