@@ -26,5 +26,11 @@
     </dd>
 </dl>
 
+<% if @beverage.active? %>
+  <%= button_to 'DESABILITAR', disable_item_path(@beverage)%>  
+<%else%>
+  <%= button_to 'ATIVAR', enable_item_path(@beverage)%>
+<%end%>
+
 <%= link_to 'Editar', edit_beverage_path(@beverage)%>
 <%= button_to 'Excluir', beverage_path(@beverage), method: :delete%> 

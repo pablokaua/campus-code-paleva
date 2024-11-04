@@ -18,5 +18,11 @@
     </dd>
 </dl>
 
+<% if @dish.active? %>
+  <%= button_to 'DESABILITAR', disable_item_path(@dish)%>  
+<%else%>
+  <%= button_to 'ATIVAR', enable_item_path(@dish)%>
+<%end%>
+
 <%= link_to 'Editar', edit_dish_path(@dish)%>
 <%= button_to 'Excluir', dish_path(@dish), method: :delete%> 
