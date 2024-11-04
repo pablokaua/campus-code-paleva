@@ -10,7 +10,7 @@ describe 'Usuário vê suas bebidas' do
 
     first_beverage = Beverage.create!(name: 'Cachaça', description: 'Bebida feita com blabla', calories: 115, alcoholic: true,restaurant: restaurant, photo: attach_image)
     second_beverage = Beverage.create!(name: 'Espumante', description: 'Bebida feita com blabla', calories: 110, alcoholic: true, restaurant: other_restaurant, photo: attach_image)
-    third_beverage = Beverage.create!(name: 'Gim', description: 'Bebida feita com blabla', calories: 60, alcoholic: true, restaurant: restaurant, photo: attach_image)
+    third_beverage = Beverage.create!(name: 'Gim', description: 'Bebida feita com blabla', calories: 60, alcoholic: true, restaurant: restaurant, photo: attach_image, status: :inactive)
     
     login_as user
     visit root_path 
@@ -19,12 +19,14 @@ describe 'Usuário vê suas bebidas' do
     expect(page).to have_content first_beverage.name
     expect(page).to have_content first_beverage.restaurant.brand_name
     expect(page).to have_content first_beverage.calories
+    expect(page).to have_content "Status do Item: Ativo"
     expect(page).not_to have_content second_beverage.name
     expect(page).not_to have_content second_beverage.restaurant.brand_name
     expect(page).not_to have_content second_beverage.calories
     expect(page).to have_content third_beverage.name
     expect(page).to have_content third_beverage.restaurant.brand_name
     expect(page).to have_content third_beverage.calories
+    expect(page).to have_content "Status do Item: Desativado"
   end
 
   it 'e visita uma bebida' do 
@@ -43,6 +45,7 @@ describe 'Usuário vê suas bebidas' do
     expect(page).to have_content 'Restaurante: Hamburguer Rei'
     expect(page).to have_content 'Bebida feita com blabla'
     expect(page).to have_content 'Calorias: 115g'
+    expect(page).to have_content "Status do Item: Ativo"
     expect(page).to have_css 'img[src*="image.png"]'
   end
 

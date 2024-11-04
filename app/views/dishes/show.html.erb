@@ -7,6 +7,8 @@
     <dd><%= @dish.description%></dd> 
     <dt><%= Dish.human_attribute_name(:calories)%>:</dt>
     <dd><%= @dish.calories%>g</dd> 
+    <dt><%= Dish.human_attribute_name(:status)%>:</dt>
+    <dd><%= I18n.translate @dish.status %></dd>
     <dd>
         <% if @dish.photo.attached? %>
           <%= image_tag @dish.photo, size: "300x300" %>

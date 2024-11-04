@@ -1,4 +1,6 @@
 pt-BR:
+  active: "Ativo"
+  inactive: "Desativado" 
   activerecord:
     models:
       beverage: "Bebida"
@@ -10,5 +12,6 @@ pt-BR:
         restaurant_id: "Restaurante"
         alcoholic: "Alcoólica"
         photo: "Foto"
+        status: "Status do Item"
 
 

@@ -19,7 +19,7 @@ describe 'Usuário vê seus prórpios pratos' do
     other_restaurant = Restaurant.create!(corporate_name: 'Rede Mec Ducks LTDA', brand_name: 'Mec Ducks', registration_number: '37530632000177', full_address: 'Avenida Contorno Sul, 202', city: 'São Paulo', state: 'SP', phone_number: '11800000000', email: 'contato@mecducks.com', user: other_user)
 
     first_dish = Dish.create!(name: 'Canja de frango', description: '100g de Canja de frango blabla', calories: 100, restaurant: restaurant, photo: attach_image)
-    second_dish = Dish.create!(name: 'Burrito', description: '135g de blablabla', calories: 323, restaurant: other_restaurant, photo: attach_image)
+    second_dish = Dish.create!(name: 'Burrito', description: '135g de blablabla', calories: 323, restaurant: other_restaurant, photo: attach_image, status: :inactive)
     third_dish = Dish.create!(name: 'Empada de frango', description: '89g de blablbla', calories: 298, restaurant: restaurant, photo: attach_image)
     
     login_as user
@@ -29,12 +29,15 @@ describe 'Usuário vê seus prórpios pratos' do
     expect(page).to have_content first_dish.name
     expect(page).to have_content first_dish.restaurant.brand_name
     expect(page).to have_content first_dish.calories
+    expect(page).to have_content "Status do Item: Ativo"
     expect(page).not_to have_content second_dish.name
     expect(page).not_to have_content second_dish.restaurant.brand_name
     expect(page).not_to have_content second_dish.calories
+    expect(page).not_to have_content "Status do Item: Desativado"
     expect(page).to have_content third_dish.name
     expect(page).to have_content third_dish.restaurant.brand_name
     expect(page).to have_content third_dish.calories
+     expect(page).to have_content "Status do Item: Ativo"
   end
 
 
@@ -53,6 +56,7 @@ describe 'Usuário vê seus prórpios pratos' do
     expect(page).to have_content 'Restaurante: Hamburguer Rei'
     expect(page).to have_content 'descrição sobre o prato de comida'
     expect(page).to have_content 'Calorias: 100g'
+    expect(page).to have_content "Status do Item: Ativo"
     expect(page).to have_css('img[src*="image.png"]')
   end
 
