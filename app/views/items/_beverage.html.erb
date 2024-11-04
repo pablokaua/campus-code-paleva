@@ -4,6 +4,8 @@
     <dd><%= item.restaurant.brand_name%></dd>    
     <dt><%= Item.human_attribute_name(:calories)%>:</dt>
     <dd><%= item.calories%></dd>   
+    <dt><%= Item.human_attribute_name(:status)%>:</dt>
+    <dd><%= I18n.translate item.status %></dd>
     <dd>
         <% if item.photo.attached? %>
           <%= image_tag item.photo, size: "300x300" %>

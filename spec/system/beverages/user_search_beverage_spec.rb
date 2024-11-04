@@ -29,6 +29,7 @@ describe 'Usuário busca por uma bebida' do
 
     expect(page).to have_content 'Cachaça'
     expect(page).not_to have_content 'Suco de Maracujá'
+    expect(page).to have_content 'Status do Item: Ativo'
   end
 
   it 'e encontra uma bebida por descrição' do 
@@ -46,6 +47,7 @@ describe 'Usuário busca por uma bebida' do
 
     expect(page).to have_content 'Cachaça'
     expect(page).not_to have_content 'Suco de Maracujá'
+    expect(page).to have_content 'Status do Item: Ativo'
   end
 
   it 'e não encontra nenhuma bebida' do 
@@ -82,6 +84,7 @@ describe 'Usuário busca por uma bebida' do
     expect(page).to have_content 'Restaurante: Hamburguer Rei'
     expect(page).to have_content 'decrição 1'
     expect(page).to have_content 'Calorias: 150g'
+    expect(page).to have_content 'Status do Item: Ativo'
     expect(page).to have_css 'img[src*="image.png"]'
   end 
 

@@ -29,6 +29,7 @@ describe 'Usuário busca por um prato' do
 
     expect(page).to have_content 'Canja de frango'
     expect(page).not_to have_content 'Burrito'
+    expect(page).to have_content 'Status do Item: Ativo'
   end
 
   it 'e encontra um prato por descrição' do 
@@ -46,6 +47,7 @@ describe 'Usuário busca por um prato' do
 
     expect(page).to have_content 'Canja de frango'
     expect(page).not_to have_content 'Burrito'
+    expect(page).to have_content 'Status do Item: Ativo'
   end
 
   it 'e não encontra nenhum prato' do 
@@ -81,6 +83,7 @@ describe 'Usuário busca por um prato' do
     expect(page).to have_content 'Restaurante: Hamburguer Rei'
     expect(page).to have_content '100g de Canja de frango blabla'
     expect(page).to have_content 'Calorias: 100g'
+    expect(page).to have_content 'Status do Item: Ativo'
     expect(page).to have_css 'img[src*="image.png"]'
   end 
 
