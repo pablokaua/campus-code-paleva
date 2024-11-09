@@ -18,6 +18,14 @@
     </dd>
 </dl>
 
+
+<div>
+  <% @dish.tag_models.each do |tag|%>
+    <%= tag.description%>
+  <%end%>
+</div>
+
+
 <% if @dish.active? %>
   <%= button_to 'DESABILITAR', disable_item_path(@dish)%>  
 <%else%>

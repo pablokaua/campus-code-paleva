@@ -12,7 +12,7 @@ describe 'Usuário cadastra modelo de marcador' do
     fill_in 'Descrição', with: 'Tag 99'
     click_on 'Enviar'
 
-    expect(page).to have_content 'Modelo de marcador cadastrado com sucesso'
+    expect(page).to have_content 'Marcador criado com sucesso!'
     expect(page).to have_content 'Tag 99'
   end 
 

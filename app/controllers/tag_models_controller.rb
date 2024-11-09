@@ -16,7 +16,7 @@ class TagModelsController < ApplicationController
     @tag_model.restaurant = current_user.restaurant
 
     if @tag_model.save 
-      redirect_to @tag_model, notice: 'Modelo de marcador cadastrado com sucesso'
+      redirect_to @tag_model, notice: 'Marcador criado com sucesso!'
     else
       flash.now[:alert] = 'Não foi possível cadastrar o modelo de produto'
       render :new 
