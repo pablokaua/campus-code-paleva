@@ -1,13 +1,19 @@
-<h1>Modelos de Marcadores</h1>
+<div class="flex min-w-full flex-col items-center gap-5">
+    <h1 class="text-xl text-center">Modelos de Marcadores</h1>
 
-<%= link_to 'Cadastrar Novo', new_tag_model_path%>
+    <div class="inline-block rounded border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500">
+        <%= link_to 'Cadastrar Novo', new_tag_model_path%>
+    </div>
 
-<% if @tag_models.any?%>
-    <% @tag_models.each do |tag|%>
-        <div>
-            <%= tag.description%>
+    <% if @tag_models.any?%>
+        <div class="flex flex-wrap gap-4">
+        <% @tag_models.each do |tag|%>
+            <div class="border-2 px-10 py-4">
+                <%= link_to tag.description, tag_model_path(tag.id)%>
+            </div>
+        <%end%>
         </div>
+    <%else%>
+        <p class="text-xl text-center">Nenhum modelo de marcador cadastrado</p>
     <%end%>
-<%else%>
-    <p>Nenhum modelo de marcador cadastrado</p>
-<%end%>
+</div>

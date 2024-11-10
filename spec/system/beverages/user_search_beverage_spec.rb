@@ -7,11 +7,10 @@ describe 'Usuário busca por uma bebida' do
 
     login_as user 
     visit root_path 
-
-    within 'header nav' do 
-      expect(page).to have_field 'Buscar por item'
-      expect(page).to have_button 'Buscar'
-    end
+    click_on 'Minhas Bebidas'
+    
+    expect(page).to have_field 'Buscar por item'
+    expect(page).to have_button 'Buscar'
   end
 
   it 'e encontra um prato por nome' do 
@@ -24,6 +23,7 @@ describe 'Usuário busca por uma bebida' do
 
     login_as user 
     visit root_path 
+    click_on 'Minhas Bebidas'
     fill_in 'Buscar por item', with: first_beverage.name
     click_on 'Buscar'
 
@@ -42,6 +42,7 @@ describe 'Usuário busca por uma bebida' do
 
     login_as user 
     visit root_path 
+    click_on 'Minhas Bebidas'
     fill_in 'Buscar por item', with: first_beverage.description
     click_on 'Buscar'
 
@@ -58,6 +59,7 @@ describe 'Usuário busca por uma bebida' do
 
     login_as user 
     visit root_path 
+    click_on 'Minhas Bebidas'
     fill_in 'Buscar por item', with: 'Bebida'
     click_on 'Buscar'
 
@@ -73,6 +75,7 @@ describe 'Usuário busca por uma bebida' do
 
     login_as user 
     visit root_path 
+    click_on 'Minhas Bebidas'
     fill_in 'Buscar por item', with: beverage.name
     click_on 'Buscar'
     click_on beverage.name
@@ -97,6 +100,7 @@ describe 'Usuário busca por uma bebida' do
 
     login_as user 
     visit root_path 
+    click_on 'Minhas Bebidas'
     fill_in 'Buscar por item', with: beverage.name
     click_on 'Buscar'
     click_on 'Editar'
