@@ -19,23 +19,20 @@
   </head>
 
   <body>
-    <header>
-      <header>
+    <header class="flex justify-between bg-gray-100 p-3 items-center gap-5">
+      <div>
         <%= link_to root_path do%>
           <h1>PaLevá</h1>
         <%end%>
-      </header>
-      <nav>
+      </div>
+      <nav class="flex items-center gap-8">
         <% if user_signed_in? %>
-          <%= button_to 'Sair', destroy_user_session_path, method: :delete%> 
           <%= link_to 'Meus Pratos', dishes_path%>
           <%= link_to 'Minhas Bebidas', beverages_path%>
           <%= link_to 'Modelos de Marcadores', tag_models_path%>
-          <%= form_with(url: search_items_path,method: :get) do |f|%>
-            <%= f.label :query, 'Buscar por item'%>
-            <%= f.text_field :query%>
-            <%= f.submit 'Buscar'%>
-          <%end%>
+          <div class="inline-block rounded border border-red-600 bg-red-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500">
+            <%= button_to 'Sair', destroy_user_session_path, method: :delete%> 
+          </div>
         <%end%> 
       </nav>
     </header>

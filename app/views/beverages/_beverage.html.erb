@@ -1,11 +1,19 @@
-<dl>
-    <dt><%= link_to beverage.name,  beverage_path(beverage)%></dt>    
-    <dt><%= Beverage.human_attribute_name(:restaurant_id)%>:</dt>
-    <dd><%= beverage.restaurant.brand_name%></dd>    
-    <dt><%= Beverage.human_attribute_name(:calories)%>:</dt>
-    <dd><%= beverage.calories%></dd>    
-    <dt><%= Beverage.human_attribute_name(:status)%>:</dt>
-    <dd><%= I18n.translate beverage.status %></dd>
+<dl class="border-2 p-4">
+    <div>
+        <dt><%= link_to beverage.name,  beverage_path(beverage)%></dt>    
+    </div>
+    <div class="flex">
+        <dt><%= Beverage.human_attribute_name(:restaurant_id)%>:</dt>
+        <dd><%= beverage.restaurant.brand_name%></dd>    
+    </div>
+    <div class="flex">
+        <dt><%= Beverage.human_attribute_name(:calories)%>:</dt>
+        <dd><%= beverage.calories%></dd>    
+    </div>
+    <div class="flex">
+        <dt><%= Beverage.human_attribute_name(:status)%>:</dt>
+        <dd><%= I18n.translate beverage.status %></dd>
+    </div>
     <div>
         <% if beverage.photo.attached? %>
             <%= image_tag beverage.photo, size: "300x300" %>

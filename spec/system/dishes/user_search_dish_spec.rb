@@ -7,11 +7,10 @@ describe 'Usuário busca por um prato' do
 
     login_as user 
     visit root_path 
+    click_on 'Meus Pratos'
 
-    within 'header nav' do 
-      expect(page).to have_field 'Buscar por item'
-      expect(page).to have_button 'Buscar' 
-    end
+    expect(page).to have_field 'Buscar por item'
+    expect(page).to have_button 'Buscar' 
   end
 
   it 'e encontra um prato por nome' do 
@@ -24,6 +23,7 @@ describe 'Usuário busca por um prato' do
 
     login_as user 
     visit root_path 
+    click_on 'Meus Pratos'
     fill_in 'Buscar por item', with: first_dish.name
     click_on 'Buscar'
 
@@ -42,6 +42,7 @@ describe 'Usuário busca por um prato' do
 
     login_as user 
     visit root_path 
+    click_on 'Meus Pratos'
     fill_in 'Buscar por item', with: first_dish.description
     click_on 'Buscar'
 
@@ -58,6 +59,7 @@ describe 'Usuário busca por um prato' do
 
     login_as user 
     visit root_path 
+    click_on 'Meus Pratos'
     fill_in 'Buscar por item', with: 'Prato'
     click_on 'Buscar'
 
@@ -73,6 +75,7 @@ describe 'Usuário busca por um prato' do
 
     login_as user 
     visit root_path 
+    click_on 'Meus Pratos'
     fill_in 'Buscar por item', with: dish.name
     click_on 'Buscar'
     click_on dish.name
@@ -96,6 +99,7 @@ describe 'Usuário busca por um prato' do
 
     login_as user 
     visit root_path 
+    click_on 'Meus Pratos'
     fill_in 'Buscar por item', with: dish.name
     click_on 'Buscar'
     click_on 'Editar'
