@@ -10,7 +10,7 @@ describe 'Usuário busca por um prato' do
 
     within 'header nav' do 
       expect(page).to have_field 'Buscar por item'
-      expect(page).to have_button 'Buscar'
+      expect(page).to have_button 'Buscar' 
     end
   end
 

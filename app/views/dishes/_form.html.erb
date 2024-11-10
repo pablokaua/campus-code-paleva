@@ -29,5 +29,16 @@
         <%= f.label :photo%>
         <%= f.file_field :photo%>
     </div>
+    
+    <div>
+        <h3>Selecione os marcadores</h3>
+        <%= f.collection_check_boxes :tag_model_ids, @tag_models, :id, :description do |b| %>
+            <div>
+            <%= b.check_box %>
+            <%= b.label %>
+            </div>
+        <% end %>
+        <%= link_to 'Adicionar Marcador', new_tag_model_path%>
+    </div>
     <%= f.submit 'Gravar'%>
 <%end%>
