@@ -4,5 +4,5 @@ class TagModel < ApplicationRecord
   has_many :items, through: :item_tags
 
   validates :description, presence: true
-  validates :description, uniqueness: true
+  validates :description, uniqueness: {scope: :restaurant_id}
 end
