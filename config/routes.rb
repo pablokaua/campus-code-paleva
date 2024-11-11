@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :tag_models, only: [:index, :new, :create, :show]
   
   resources :items, only: [] do 
+    resources :portions, only: [:new, :create, :edit, :update]
     get 'search', on: :collection
     post 'disable', on: :member
     post 'enable', on: :member

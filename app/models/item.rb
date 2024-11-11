@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :restaurant
   has_one_attached :photo
+  has_many :portions
   has_many :item_tags
   has_many :tag_models, through: :item_tags
 

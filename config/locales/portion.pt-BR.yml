@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      portion: "Porção"
+    attributes:
+      portion:
+        description: "Descrição"
+        current_price: "Preço"
+        item_id: "Item"
+        
+
+
