@@ -44,7 +44,7 @@
     <h2 class="text-center text-xl font-bold">Porções</h2>
     <div class="flex gap-2 text-center">
       <% @dish.portions.each do |portion|%>
-        <div class="border-2 border-black px-4 py-8 bg-gray-200">
+        <div class="border-2 border-black px-4 py-8 bg-gray-200 flex flex-col">
           <div class="w-64 h-64">
             <% if @dish.photo.attached? %>
               <%= image_tag @dish.photo %>
@@ -54,6 +54,9 @@
           </div>
           <h3 class="font-bold text-xl"><%= portion.description%></h3>
           <span>R$ <%= portion.current_price%></span>
+          <div class="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+            <%= link_to 'Editar Porção', edit_item_portion_path(@dish, portion)%>
+          </div>
         </div>
       <%end%>
     </div>
