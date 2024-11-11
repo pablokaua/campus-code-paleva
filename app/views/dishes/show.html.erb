@@ -1,36 +1,79 @@
-<h1>Detalhes do Prato</h1>
-<h2><%= Dish.model_name.human%> <%= @dish.name%></h2>
+<div class="flex flex-col gap-4 items-center w-screen">
+  <h1 class="text-lg font-medium text-gray-900">Detalhes do Prato</h1>
 
-<dl>   
-    <dt><%= Dish.human_attribute_name(:restaurant_id)%>:</dt>
-    <dd><%= @dish.restaurant.brand_name%></dd>    
-    <dd><%= @dish.description%></dd> 
-    <dt><%= Dish.human_attribute_name(:calories)%>:</dt>
-    <dd><%= @dish.calories%>g</dd> 
-    <dt><%= Dish.human_attribute_name(:status)%>:</dt>
-    <dd><%= I18n.translate @dish.status %></dd>
-    <dd>
+  <dl>   
+      <dd>
         <% if @dish.photo.attached? %>
           <%= image_tag @dish.photo, size: "300x300" %>
         <% else %>
             <p>Sem foto disponível</p>
         <% end %>
-    </dd>
-</dl>
+      </dd>
+      <h2 class="text-center text-lg font-medium text-gray-900"><%= Dish.model_name.human%> <%= @dish.name%></h2>
+      <div class="flex">
+        <dt><%= Dish.human_attribute_name(:restaurant_id)%>:</dt>
+        <dd><%= @dish.restaurant.brand_name%></dd>    
+      </div>
+      <div>
+        <dd><%= @dish.description%></dd> 
+      </div>
+      <div class="flex">
+        <dt><%= Dish.human_attribute_name(:calories)%>:</dt>
+        <dd><%= @dish.calories%>g</dd> 
+      </div>
+      <div class="flex">
+        <dt><%= Dish.human_attribute_name(:status)%>:</dt>
+        <dd><%= I18n.translate @dish.status %></dd>
+      </div>
+  </dl>
 
+  <div class="flex gap-2 flex-wrap">
+    <% @dish.tag_models.each do |tag|%>
+      <div class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm text-purple-700">
+        <%= tag.description%>
+      </div>
+    <%end%>
+  </div>
 
-<div>
-  <% @dish.tag_models.each do |tag|%>
-    <%= tag.description%>
-  <%end%>
+  <div class="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+    <%= link_to 'Adicionar Porção', new_item_portion_path(item_id: @dish.id)%>
+  </div>
+
+  <div>
+    <% if @dish.portions.any?%>
+    <h2 class="text-center text-xl font-bold">Porções</h2>
+    <div class="flex gap-2 text-center">
+      <% @dish.portions.each do |portion|%>
+        <div class="border-2 border-black px-4 py-8 bg-gray-200">
+          <div class="w-64 h-64">
+            <% if @dish.photo.attached? %>
+              <%= image_tag @dish.photo %>
+            <% else %>
+                <p>Sem foto disponível</p>
+            <% end %>
+          </div>
+          <h3 class="font-bold text-xl"><%= portion.description%></h3>
+          <span>R$ <%= portion.current_price%></span>
+        </div>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+
+  <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
+    <div class="inline-block rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
+      <% if @dish.active? %>
+        <%= button_to 'Desabilitar', disable_item_path(@dish)%>  
+      <%else%>
+        <%= button_to 'Ativar', enable_item_path(@dish)%>
+      <%end%>
+    </div>
+
+    <div class="inline-block rounded-md px-4 py-2 text-sm text-gray-500 hover:text-gray-700 focus:relative">
+      <%= link_to 'Editar', edit_dish_path(@dish)%>
+    </div>
+    <div class="inline-block rounded-md bg-white px-4 py-2 text-sm text-blue-500 shadow-sm focus:relative">
+      <%= button_to 'Excluir', dish_path(@dish), method: :delete%> 
+    </div>
+  </div>
 </div>
-
-
-<% if @dish.active? %>
-  <%= button_to 'DESABILITAR', disable_item_path(@dish)%>  
-<%else%>
-  <%= button_to 'ATIVAR', enable_item_path(@dish)%>
-<%end%>
-
-<%= link_to 'Editar', edit_dish_path(@dish)%>
-<%= button_to 'Excluir', dish_path(@dish), method: :delete%> 

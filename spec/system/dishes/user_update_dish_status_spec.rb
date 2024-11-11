@@ -11,8 +11,8 @@ describe 'Usuário informa novo status ao prato' do
     click_on 'Meus Pratos'
     click_on dish.name
 
-    expect(page).to have_button "DESABILITAR"
-    expect(page).not_to have_button "ATIVAR"
+    expect(page).to have_button "Desabilitar"
+    expect(page).not_to have_button "Ativar"
   end
 
   it 'e prato foi desabilitado' do 
@@ -24,11 +24,11 @@ describe 'Usuário informa novo status ao prato' do
     visit root_path 
     click_on 'Meus Pratos'
     click_on dish.name
-    click_on 'DESABILITAR'
+    click_on 'Desabilitar'
 
     expect(current_path).to eq dish_path(dish.id)
-    expect(page).to have_content 'ATIVAR'
-    expect(page).not_to have_content 'DESABILITAR'
+    expect(page).to have_content 'Ativar'
+    expect(page).not_to have_content 'Desabilitar'
   end
 
   it 'e o prato foi habilitado' do 
@@ -40,10 +40,10 @@ describe 'Usuário informa novo status ao prato' do
     visit root_path 
     click_on 'Meus Pratos'
     click_on dish.name
-    click_on 'ATIVAR'
+    click_on 'Ativar'
 
     expect(current_path).to eq dish_path(dish.id)
-    expect(page).to have_content 'DESABILITAR'
-    expect(page).not_to have_content 'ATIVAR'
+    expect(page).to have_content 'Desabilitar'
+    expect(page).not_to have_content 'Ativar'
   end
 end

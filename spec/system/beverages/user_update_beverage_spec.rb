@@ -11,8 +11,8 @@ describe 'Usuário informa novo status a bebida' do
     click_on 'Minhas Bebidas'
     click_on beverage.name
 
-    expect(page).to have_button "DESABILITAR"
-    expect(page).not_to have_button "ATIVAR"
+    expect(page).to have_button "Desabilitar"
+    expect(page).not_to have_button "Ativar"
   end
 
   it 'e a bebida foi desabilitada' do 
@@ -24,11 +24,11 @@ describe 'Usuário informa novo status a bebida' do
     visit root_path 
     click_on 'Minhas Bebidas'
     click_on beverage.name
-    click_on 'DESABILITAR'
+    click_on 'Desabilitar'
 
     expect(current_path).to eq beverage_path(beverage.id)
-    expect(page).to have_content 'ATIVAR'
-    expect(page).not_to have_content 'DESABILITAR'
+    expect(page).to have_content 'Ativar'
+    expect(page).not_to have_content 'Desabilitar'
   end
 
   it 'e a bebida foi habilitada' do 
@@ -40,10 +40,10 @@ describe 'Usuário informa novo status a bebida' do
     visit root_path 
     click_on 'Minhas Bebidas'
     click_on beverage.name
-    click_on 'ATIVAR'
+    click_on 'Ativar'
 
     expect(current_path).to eq beverage_path(beverage.id)
-    expect(page).to have_content 'DESABILITAR'
-    expect(page).not_to have_content 'ATIVAR'
+    expect(page).to have_content 'Desabilitar'
+    expect(page).not_to have_content 'Ativar'
   end
 end
